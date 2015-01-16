@@ -100,7 +100,7 @@ shinyServer(function(input, output, session) {
                 
         })
         
-        output$prediction <- renderPrint({
+        output$prediction <- renderText({
                 if(!is.null(input$cyl)) predict_mtcars$cyl <- as.factor(input$cyl)
                 if(!is.null(input$disp)) predict_mtcars$disp <- input$disp
                 if(!is.null(input$hp)) predict_mtcars$hp <- input$hp
@@ -112,7 +112,7 @@ shinyServer(function(input, output, session) {
                 if(!is.null(input$gear)) predict_mtcars$gear <- as.factor(input$gear)
                 if(!is.null(input$carb)) predict_mtcars$carb <- as.factor(input$carb)
                 output$values <- renderPrint({
-                        predict_mtcars[names(sub_mtcars[])]
+                        predict_mtcars[names(sub_mtcars[-1])]
                 })
                 paste(round(predict(model(),predict_mtcars),2), "mpg")
                     
